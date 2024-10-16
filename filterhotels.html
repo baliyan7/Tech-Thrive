@@ -1,0 +1,1171 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Title</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            /* Add your image URL here */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 50vh;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: felx;
+            line-height: 1.6;
+            align-items: center;
+            justify-content: center;
+            background: #f0f2f5;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* Loader overlay that doesn't affect the layout */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Semi-transparent background */
+            z-index: 9999;
+            /* High z-index to ensure it overlays everything */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+            /* Smooth fade-out effect */
+        }
+
+        /* Spinner styling */
+        .spinner {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #3498db;
+            position: absolute;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+
+        .circle1 {
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        .circle2 {
+            left: 30px;
+            animation-delay: 0.3s;
+        }
+
+        .circle3 {
+            left: 60px;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Ensure the content is initially hidden */
+        #content {
+            visibility: hidden;
+            /* This ensures the content is hidden while the loader is visible */
+        }
+
+        /* Header styles */
+        header {
+            background-color: #CDDFE2;
+            padding: 10px;
+            color: #fff;
+            border-radius: 110px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            width: 1380px;
+            margin: auto;
+            margin-top: 10px;
+            margin-bottom: 40px;
+            position: fixed;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        section {
+
+            padding: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        legend {
+            font-size: 1.2em;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            background-color: 000000;
+        }
+
+
+
+
+
+
+
+
+        /* Logo styles */
+        .logo img {
+            margin-top: 6px;
+            margin-left: 12px;
+            max-width: 200px;
+            height: auto;
+            color: white;
+            margin-bottom: 6px;
+            border-radius: 300px;
+        }
+
+
+        .header-buttons {
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .sign-in-btn,
+        .contact-btn {
+            background: rgb(0, 0, 0);
+            color: #fff;
+            border: none;
+            padding: 10px 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 25px;
+            margin-left: -260px;
+        }
+
+        .sign-in-btn:hover,
+        .contact-btn:hover {
+            transition: 0.3s;
+            background: #1668e3;
+        }
+
+
+        .container {
+            width: 1425px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+.container h1{
+    margin-top: 120px;
+}
+        .search-bar {
+
+            margin-bottom: 10px;
+
+            margin-top: 6px;
+            margin-left: -60px;
+
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+            margin-top: 10px;
+            width: 260px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-left: -160px;
+            margin-bottom: 6px;
+        }
+        .mainsearchbutton {
+            margin-left: -380px;
+            background: black;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        button {
+            margin-left: 0px;
+            background: black;
+            color: #fff;
+            padding: 11px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transition: 0.3s;
+            background: #1668e3;
+            color: white;
+        }
+
+        .card {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 750px;
+            margin-bottom: 20px;
+            text-decoration: none;
+           
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth transition for hiding */
+  opacity: 1; /* Fully visible */
+  visibility: visible; /* Ensure visibility when fully visible */
+
+        }
+        .hotel-cards {
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
+
+
+.hidden {
+  opacity: 0; /* Fully transparent */
+  visibility: hidden; /* Hidden from view */
+}
+
+
+        .card img {
+            width: 240px;
+            /* Fixed width */
+            height: 110%;
+            /* Fill the height of the card */
+            object-fit: cover;
+            /* Cover the entire area */
+
+        }
+
+        .card-content {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 650px;
+            margin-bottom: 12px;
+
+            height: -70vh
+        }
+
+
+        .card-content h2 {
+            margin: 0;
+        }
+
+        .card-content p {
+            margin: 5px 0;
+        }
+
+        #recommendations {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .recommendation {
+            padding: 5px;
+            cursor: pointer;
+            background-color: #e9ecef;
+            margin-bottom: 5px;
+        }
+
+        .recommendation:hover {
+            background-color: #d1d1d1;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+
+        #resultCount {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        #recentSearches {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .recent-search {
+            padding: 5px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            margin-bottom: 5px;
+        }
+
+        .recent-search:hover {
+            background-color: #d1d1d1;
+        }
+
+        #recentSearches {
+            margin-top: 10px;
+            display: none;
+            /* Hide by default */
+        }
+
+        .recent-search {
+            padding: 5px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+
+        .recent-search:hover {
+            background-color: #d1d1d1;
+        }
+
+        .image-slider {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            /* Space below the slider */
+        }
+
+        .slider-image {
+            width: 150px;
+            /* Adjust as needed */
+            height: 100px;
+            /* Adjust as needed */
+            object-fit: cover;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            background: black;
+            /* Semi-transparent background */
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            /* Adjust size as needed */
+            padding: 5px;
+            /* Add some padding */
+            z-index: 10;
+            /* Ensure buttons are above the image */
+            display: none;
+            /* Initially hide the buttons */
+        }
+
+        .prev {
+            left: 5px;
+            /* Position left */
+            top: 50%;
+            transform: translateY(-50%);
+            /* Center vertically */
+        }
+
+        .next {
+            right: 5px;
+            /* Position right */
+            top: 50%;
+            transform: translateY(-50%);
+            /* Center vertically */
+        }
+
+        .image-slider:hover .prev,
+        .image-slider:hover .next {
+            display: block;
+        
+            color: white;
+            /* Show buttons on hover */
+        }
+
+
+
+        .check-availability {
+            background-color: #4CAF50;
+            /* Green background */
+            color: white;
+            /* White text */
+            border: none;
+            padding: 5px 10px;
+            /* Smaller padding */
+            cursor: pointer;
+            border-radius: 5px;
+            /* Rounded corners */
+            font-size: 14px;
+            /* Adjust font size */
+            transition: background-color 0.3s;
+            /* Smooth background transition */
+        }
+
+        .check-availability:hover {
+            background-color: #45a049;
+            /* Darker green on hover */
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            /* Stack elements vertically */
+        }
+
+        .check-availability {
+            background-color: #4CAF50;
+            /* Green background */
+            color: white;
+            /* White text */
+            border: none;
+            padding: 5px 10px;
+            /* Smaller padding */
+            cursor: pointer;
+            width: 200px;
+            border-radius: 5px;
+            /* Rounded corners */
+            font-size: 20px;
+            /* Adjust font size */
+            margin-top: 5px;
+            /* Space above the button */
+            transition: background-color 0.3s;
+            /* Smooth background transition */
+        }
+
+        .check-availability:hover {
+            background-color: #45a049;
+            /* Darker green on hover */
+        }
+
+        /* Subscription card styles */
+        .subscription-card {
+            position: fixed;
+            top: 20px;
+            /* Initially off-screen */
+            width: 600px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-decoration: none;
+            
+            
+            transition: right 0.5s ease;
+            /* Animation for sliding in */
+        }
+
+        .subscription-card.show {
+            margin: 120px 775px;
+            
+            /* Slide into view */
+        }
+
+        .subscription-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .subscription-header h2 {
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .subscription-card ul {
+            padding-left: 20px;
+        }
+
+        .plans {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .plan {
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 8px;
+            width: 80px;
+        }
+
+        .subscribe-btn {
+            display: block;
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+             /* Basic footer styling */
+             footer {
+            border-radius: 20px;
+            background-color: white;
+            padding: 40px 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 1425px;
+            margin: 0;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            margin-left: -20px;
+            z-index: 1000;
+            position: absolute;
+        }
+
+        /* Flex container for the footer columns */
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Styling for each footer column */
+        .footer-column {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        /* Heading styles */
+        .footer-column h3 {
+            font-size: 18px;
+            color: #003366;
+            margin-bottom: 15px;
+        }
+
+        /* Unordered list style for links */
+        .footer-column ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Individual list item style */
+        .footer-column ul li {
+            margin-bottom: 10px;
+            transition: transform 0.3s ease-in-out;
+            /* Smooth zoom transition */
+        }
+
+        /* Link styles */
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+            display: inline-block;
+            transition: transform 0.3s ease, color 0.3s ease;
+            /* Add smooth transition for zoom and color change */
+        }
+
+        /* Hover effect: Zoom in on the link and change color */
+        .footer-column ul li a:hover {
+            color: #003366;
+            transform: scale(1.1);
+            /* Zoom the link */
+        }
+
+        /* Social media icon style */
+        .footer-column ul li img {
+            width: 24px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+            /* Add zoom effect for icons */
+        }
+
+        /* Hover effect for icons: Zoom in */
+        .footer-column ul li img:hover {
+            transform: scale(1.2);
+            /* Zoom the icons */
+            opacity: 0.7;
+        }
+
+        .lastfooter {
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <a href="#"><img src="./All-photos/tech-thrive-logo.jpeg" alt="logo"></a>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for hotels or destinations">
+                
+            </div>
+<div> <button id="searchButton" class="mainsearchbutton">Search</button></div>
+            <div class="header-title"></div>
+            <button id="signInBtn" class="sign-in-btn">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                </nav>
+            </button>
+            <button id="hiddenGemsBtn" class="sign-in-btn">
+                <nav>
+                    <ul>
+                        <li><a href="hiddenGems.html">Hidden Gems</a></li>
+                    </ul>
+                </nav>
+            </button>
+
+
+
+            <button id="contactBtn" class="contact-btn">
+                <nav>
+                    <ul>
+                        <li><a href="popularAttractions.html">Destinations</a></li>
+                    </ul>
+                </nav>
+            </button>
+
+        </header>
+        <div class="content">
+            <div class="subscription-card" id="subscriptionCard">
+                <div class="subscription-header">
+                    <h2>Subscribe Now!</h2>
+
+                </div>
+                <p>Get exclusive benefits:</p>
+                <ul>
+                    <li>Discounts on hotel bookings</li>
+                    <li>Best hidden gems and places to visit</li>
+                    <li>A proper guide to explore places</li>
+                    <li>Updated information about travel destinations</li>
+                    <li>Latest news of places you plan to visit</li>
+                </ul>
+                <h3>Choose Your Plan</h3>
+              
+                <select>
+                    <option value="3months">3 Months - $50</option>
+                    <option value="6months">6 Months - $90</option>
+                    <option value="yearly">1 Year - $150</option>
+                </select>
+                <button class="subscribe-btn">Subscribe Now</button>
+            </div>
+        </div>
+        <h1>Find your Hotel here...  </h1>
+       
+        <div id="loader">
+            <div class="spinner">
+                <div class="circle circle1"></div>
+                <div class="circle circle2"></div>
+                <div class="circle circle3"></div>
+            </div>
+        </div>
+        <div id="content">
+           
+
+
+
+            <!-- Recent searches will be inserted here -->
+            <div id="recentSearches"></div>
+            <div id="recommendations"></div>
+            <div id="resultCount"></div>
+            <div id="results"></div>
+        </div>
+        <script src="script.js"></script>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3><big>Contact Us</big></h3>
+                    <ul>
+                        <li><a href="#">Customer Support</a></li>
+                        <li><a href="#">Service Guarantee</a></li>
+                        <li><a href="#">More Service Info</a></li>
+                        <li>
+                            <a href="#"><img src="./All-photos/facebook footer image.png" alt="Facebook"></a>
+                            <a href="#"><img src="./All-photos/twitter-icon footer image.png" alt="Twitter"></a>
+                            <a href="#"><img src="./All-photos/youtube icon footer image.png" alt="YouTube"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3><big> About Us </big></h3>
+                    <ul>
+                        <li><a href="#">Privacy Statement</a>
+                        </li>
+
+                        <li><a href="termsandcond.html">Terms & Conditions</a></li>
+                        <li><a href="aboutus.html">About tech-thrive.com</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3><big>Other Services</big></h3>
+                    <ul>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="explorehotels.html">Hotels</a></li>
+
+                        <li><a href="hiddenGems.html">Hidden Gems</a></li>
+                        <li><a href="popularAttractions.html">Popular Attraction</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="lastfooter">
+                <p>&copy; 2024 tech-thrive.com All rights reserved.</p>
+            </div>
+        </footer>
+        
+    </div>
+</body>
+<script>
+    window.addEventListener('scroll', function() {
+  const cards = document.querySelectorAll('.card');
+  
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    
+    // Check if the card is in the viewport
+    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+      card.classList.remove('hidden');  // Show card when it is in view
+    } else {
+      card.classList.add('hidden');  // Hide card when it is out of view
+    }
+  });
+});
+let ticking = false;
+
+window.addEventListener('scroll', function() {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const cards = document.querySelectorAll('.card');
+      
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        
+        // Check if the card is in the viewport
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          card.classList.remove('hidden');  // Show card when it is in view
+        } else {
+          card.classList.add('hidden');  // Hide card when it is out of view
+        }
+      });
+
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+});
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.remove('hidden'); // Show card when it is in view
+    } else {
+      entry.target.classList.add('hidden'); // Hide card when it is out of view
+    }
+  });
+}, { threshold: 0.1 }); // 10% of the card is in the viewport
+
+cards.forEach(card => observer.observe(card));
+
+
+    window.addEventListener('load', function () {
+        // Get the loader element
+        var loader = document.getElementById('loader');
+
+        // Get the content element
+        var content = document.getElementById('content');
+
+        // Hide the loader with a fade-out effect
+        loader.style.opacity = '0';
+
+        // After the fade-out effect, remove the loader entirely
+        setTimeout(function () {
+            loader.style.display = 'none';
+            content.style.visibility = 'visible'; // Reveal the main content
+        }, 500); // Adjust this time to match your transition duration (0.5s in this case)
+    });
+
+
+    window.onload = function () {
+        // Show the subscription card after 1 second
+        setTimeout(function () {
+            document.getElementById('subscriptionCard').classList.add('show');
+        }, 1000);
+    };
+
+    // Close the subscription card
+    function closeSubscriptionCard() {
+        document.getElementById('subscriptionCard').classList.remove('show');
+    }
+    const hotels = [
+        {
+            name: 'The Park New Delhi',
+            location: 'The Park Hotel, 15, Sansad Marg, Hanuman Road Area, Connaught Place, New Delhi, Delhi 110001, IndiaDenver',
+            price: 'From INR 4,000',
+            rating: '★★★★★',
+            images: [
+                './Filter-Hotel-image/The Park New Delhi image 1.jpg',
+                './Filter-Hotel-image/The Park New Delhi image 2.jpeg',
+                './Filter-Hotel-image/The Park New Delhi image 3.jpeg',
+                './Filter-Hotel-image/The Park New Delhi image 4.jpeg',
+                './Filter-Hotel-image/The Park New Delhi image 5.jpeg'
+            ]
+        },
+        {
+            name: 'Pride Plaza Hotel, Aerocity New Delhi',
+            location: 'Asset 5-A, Hospitality District, Indira Gandhi International Airport, New Delhi, Delhi 110037, India',
+            price: 'From INR 6,200',
+            rating: '★★★★',
+            images: [
+                './Filter-Hotel-image/Pride Plaza Hotel, Aerocity New Delhi image 1.jpeg',
+                './Filter-Hotel-image/Pride Plaza Hotel, Aerocity New Delhi image 2.jpeg',
+                './Filter-Hotel-image/Pride Plaza Hotel, Aerocity New Delhi image 3.jpeg',
+                './Filter-Hotel-image/Pride Plaza Hotel, Aerocity New Delhi image 4.jpeg',
+                './Filter-Hotel-image/Pride Plaza Hotel, Aerocity New Delhi image 5.jpeg'
+            ]
+        },
+        {
+            name: 'Roseate House New Delhi',
+            location: 'Asset 10, Northern Access Rd, Aerocity, Hospitality District, Indira Gandhi International Airport, New Delhi, Delhi 110037, India',
+            price: 'From INR 3,700',
+            rating: '★★★★★',
+            images: [
+                './Filter-Hotel-image/Roseate House New Delhi image 1.jpeg',
+                './Filter-Hotel-image/Roseate House New Delhi image 2.jpeg',
+                './Filter-Hotel-image/Roseate House New Delhi image 3.jpeg',
+                './Filter-Hotel-image/Roseate House New Delhi image 4.jpeg',
+                './Filter-Hotel-image/Roseate House New Delhi image 5.jpeg'
+            ]
+        },
+        {
+            name: 'Holiday Inn New Delhi International Airport',
+            location: 'Asset Area 12 Hospitality District, Aerocity, New Delhi, Delhi 110037, India',
+            price: 'From INR 5,800',
+            rating: '★★★',
+            images: [
+                './Filter-Hotel-image/Holiday Inn New Delhi International Airport image 5.jpeg',
+                './Filter-Hotel-image/Holiday Inn New Delhi International Airport image 1.jpeg',
+                './Filter-Hotel-image/Holiday Inn New Delhi International Airport image 2.jpeg',
+                './Filter-Hotel-image/Holiday Inn New Delhi International Airport image 3.jpeg',
+                './Filter-Hotel-image/Holiday Inn New Delhi International Airport image 4.jpeg'
+            ]
+        },
+        {
+            name: 'JW Marriott Hotel Chandigarh',
+            location: 'Plot no: 6, Dakshin Marg, 35B, Chandigarh, 160035, India',
+            price: 'From INR 4,000',
+            rating: '★★★★',
+            images: [
+                './Filter-Hotel-image/JW Marriott Hotel Chandigarh image 1.jpeg',
+                './Filter-Hotel-image/JW Marriott Hotel Chandigarh image 2.jpeg',
+                './Filter-Hotel-image/JW Marriott Hotel Chandigarh image 3.jpeg',
+                './Filter-Hotel-image/JW Marriott Hotel Chandigarh image 4.jpeg',
+                './Filter-Hotel-image/JW Marriott Hotel Chandigarh image 5.jpeg'
+            ]
+        },
+        {
+            name: 'The Lalit Chandigarh',
+            location: 'The Lalit, The Lalit Chandigarh, IT Park Rd, Chandigarh, 160101, India',
+            price: 'From INR 9,200',
+            rating: '★★★★★',
+            images: [
+                './Filter-Hotel-image/The Lalit Chandigarh image 1.jpeg',
+                './Filter-Hotel-image/The Lalit Chandigarh image 2.jpeg',
+                './Filter-Hotel-image/The Lalit Chandigarh image 3.jpeg',
+                './Filter-Hotel-image/The Lalit Chandigarh image 4.jpeg',
+                './Filter-Hotel-image/The Lalit Chandigarh image 5.jpeg'
+            ]
+        },
+        {
+            name: 'Taj Chandigarh',
+            location: 'Block No. 9, Jan Marg, 17A, Chandigarh, 160017, India',
+            price: 'From INR 3,600',
+            rating: '★★★★★',
+            images: [
+                './Filter-Hotel-image/Taj Chandigarh image 1.jpeg',
+                './Filter-Hotel-image/Taj Chandigarh image 2.jpg',
+                './Filter-Hotel-image/Taj Chandigarh image 3.jpeg',
+                './Filter-Hotel-image/Taj Chandigarh image 4.jpeg',
+                './Filter-Hotel-image/Taj Chandigarh image 5.jpeg'
+            ]
+        },
+        {
+            name: 'Novotel Chandigarh Tribune Chowk',
+            location: 'Plot 181, 3B, Industrial Area Phase I, Chandigarh, 160002, India',
+            price: 'From INR 5,560',
+            rating: '★★★★★',
+            images: [
+                './Filter-Hotel-image/Novotel Chandigarh Tribune Chowk image 1.jpeg',
+                './Filter-Hotel-image/Novotel Chandigarh Tribune Chowk image 2.jpeg',
+                './Filter-Hotel-image/Novotel Chandigarh Tribune Chowk image 3.jpeg',
+                './Filter-Hotel-image/Novotel Chandigarh Tribune Chowk image 4.jpeg',
+                './Filter-Hotel-image/Novotel Chandigarh Tribune Chowk image 5.jpeg'
+            ]
+        },
+     /*   {
+            name: 'Taj Santacruz',
+            location: 'Chhatrapati Shivaji Maharaj International Airport, Mumbai, Maharashtra 400099, India',
+            price: 'From INR 4,000',
+            rating: '★★★★',
+            images: [
+                './Filter-Hotel-image/',
+                './Filter-Hotel-image/',
+                './Filter-Hotel-image/',
+                './Filter-Hotel-image/',
+                './Filter-Hotel-image/'
+            ]
+        },
+        {
+            name: 'Taj the Trees, Mumbai',
+            location: 'Pirojshanagar, Off Eastern Express Hwy, Mumbai, Maharashtra 400079, India',
+            price: 'From INR 8,100',
+            rating: '★★★★',
+            images: [
+                './Filter-Hotel-image/',
+                './Filter-Hotel-image/',
+                './Filter-Hotel-image/',
+                './Filter-Hotel-image/',
+                './Filter-Hotel-image/'
+            ]
+        }, 
+      */ 
+    ];
+
+    let recentSearches = [];
+    let currentIndex = {};
+
+    // Function to display hotels
+    function displayHotels(hotelsToDisplay) {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '';
+
+        if (hotelsToDisplay.length > 0) {
+            hotelsToDisplay.forEach(hotel => {
+                resultsDiv.innerHTML += `
+               <div class="hotel-cards"><div class="card">
+                    <div class="image-slider">
+                        <button class="prev" onclick="changeImage(-1, '${hotel.name}')">❮</button>
+                        <img class="slider-image" id="${hotel.name}-image" src="${hotel.images[0]}" alt="${hotel.name}">
+                        <button class="next" onclick="changeImage(1, '${hotel.name}')">❯</button>
+                    </div>
+                    <div class="card-content">
+                        <h2>${hotel.name}</h2>
+                        <p>Location: ${hotel.location}</p>
+                        <p>Rating: ${hotel.rating}</p>
+                        <p>Price: ${hotel.price}</p>
+                         <button class="check-availability">Check Availability</button>
+                    </div>
+                </div>
+                </div>
+                
+            `;
+            });
+
+            document.getElementById('resultCount').textContent = `${hotelsToDisplay.length} results found.`;
+        } else {
+            resultsDiv.innerHTML = 'No hotels found.';
+            document.getElementById('resultCount').textContent = '';
+        }
+    }
+
+    // Function to change the image
+    function changeImage(direction, hotelName) {
+        if (!currentIndex[hotelName]) {
+            currentIndex[hotelName] = 0;
+        }
+
+        const hotel = hotels.find(h => h.name === hotelName);
+        const images = hotel.images;
+
+        currentIndex[hotelName] += direction;
+
+        if (currentIndex[hotelName] >= images.length) {
+            currentIndex[hotelName] = 0; // Loop back to the first image
+        } else if (currentIndex[hotelName] < 0) {
+            currentIndex[hotelName] = images.length - 1; // Loop back to the last image
+        }
+
+        document.getElementById(`${hotelName}-image`).src = images[currentIndex[hotelName]];
+    }
+
+    // Function to update recent searches
+    function updateRecentSearches(query) {
+        recentSearches.unshift(query);
+        recentSearches = [...new Set(recentSearches)].slice(0, 3);
+
+        const recentSearchesDiv = document.getElementById('recentSearches');
+        recentSearchesDiv.innerHTML = '';
+
+        recentSearches.forEach(search => {
+            const searchDiv = document.createElement('div');
+            searchDiv.classList.add('recent-search');
+            searchDiv.textContent = search;
+            searchDiv.addEventListener('click', () => {
+                document.getElementById('searchInput').value = search;
+                document.getElementById('searchButton').click(); // Trigger the search
+            });
+            recentSearchesDiv.appendChild(searchDiv);
+        });
+    }
+
+    // Initially display all hotels
+    displayHotels(hotels);
+
+    // Event listener for search button
+    document.getElementById('searchButton').addEventListener('click', function () {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const resultsDiv = document.getElementById('results');
+        const recommendationsDiv = document.getElementById('recommendations');
+        const resultCountDiv = document.getElementById('resultCount');
+
+        resultsDiv.innerHTML = '';
+        recommendationsDiv.innerHTML = '';
+        resultCountDiv.textContent = '';
+
+        if (query) {
+            updateRecentSearches(query);
+
+            const results = hotels.filter(hotel =>
+                hotel.name.toLowerCase().includes(query) ||
+                hotel.location.toLowerCase().includes(query)
+            );
+
+            displayHotels(results);
+
+            const recommendations = hotels.filter(hotel =>
+                hotel.name.toLowerCase().includes(query)
+            );
+
+            recommendations.forEach(hotel => {
+                const recDiv = document.createElement('div');
+                recDiv.classList.add('recommendation');
+                recDiv.textContent = hotel.name;
+                recDiv.addEventListener('click', () => {
+                    document.getElementById('searchInput').value = hotel.name;
+                    displayHotels([hotel]); // Display the clicked hotel
+                    recommendationsDiv.innerHTML = ''; // Clear recommendations
+                    resultCountDiv.textContent = '1 result found.';
+                });
+                recommendationsDiv.appendChild(recDiv);
+            });
+        } else {
+            displayHotels(hotels); // Show all hotels if no query
+        }
+    });
+
+    // Show recommendations while typing
+    document.getElementById('searchInput').addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        const recommendationsDiv = document.getElementById('recommendations');
+        recommendationsDiv.innerHTML = '';
+
+        if (query) {
+            const matchingHotels = hotels.filter(hotel =>
+                hotel.name.toLowerCase().includes(query)
+            );
+
+            matchingHotels.forEach(hotel => {
+                const recDiv = document.createElement('div');
+                recDiv.classList.add('recommendation');
+                recDiv.textContent = hotel.name;
+                recDiv.addEventListener('click', () => {
+                    document.getElementById('searchInput').value = hotel.name;
+                    displayHotels([hotel]); // Display the clicked hotel
+                    recommendationsDiv.innerHTML = ''; // Clear recommendations
+                });
+                recommendationsDiv.appendChild(recDiv);
+            });
+        }
+    });
+
+    // Handle search box focus and blur for recent searches
+    const searchInput = document.getElementById('searchInput');
+    const recentSearchesDiv = document.getElementById('recentSearches');
+
+    searchInput.addEventListener('focus', () => {
+        recentSearchesDiv.style.display = 'block'; // Show recent searches
+        updateRecentSearches(); // Update the display of recent searches when focused
+    });
+
+    searchInput.addEventListener('blur', () => {
+        recentSearchesDiv.style.display = 'none'; // Hide recent searches when focus is lost
+    });
+
+    // Initially hide the recent searches div
+    recentSearchesDiv.style.display = 'none';
+
+</script>
+
+</html>

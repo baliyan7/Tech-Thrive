@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="chatbot.css">
+    <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.chat-container {
+    width: 600px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 20px;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.bot-info {
+    display: flex;
+    align-items: center;
+}
+
+.bot-icon {
+    font-size: 35px;
+    margin-right: 10px;
+}
+
+h2 {
+    font-size:25px;
+    margin: 0;
+}
+
+.status {
+    color: #4CAF50;
+    font-size: 14px;
+}
+
+.chat-box {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-box p {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 75%;
+    font-size: 14px;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #0072ff;
+    color: white;
+    text-align: right;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    font-weight: bold;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: black;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+/* Existing styles from above */
+
+.announcement {
+    text-align: left;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    margin: 10px 30px;
+}
+
+.announcement h1 {
+    font-size: 26px;
+}
+
+.announcement p {
+    font-size: 20px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="announcement">
+        <h1>Chatbot Coming Soon!</h1>
+        <p>
+            We are excited to announce that our travel assistant chatbot will be launching soon. 
+            It will help you find flights, hotels, explore popular destinations, and assist with booking, all within a few clicks!
+        </p>
+       <p>
+        Here is the sample of Travel Assistant Chat bot!
+       </p>
+    </div>
+
+    <div class="chat-container">
+        <div class="header">
+            <div class="bot-info">
+                <div class="bot-icon">🤖</div>
+                <div>
+                    <h2>Travel Assistant</h2>
+                    <p class="status">Online</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-box" id="chat-box"></div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Ask me about Flights, Hotels, or Destinations..." onkeydown="if(event.key === 'Enter') sendMessage()">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script src="travel_chatbot_styled.js"></script>
+</body>
+<script>
+const chatBox = document.getElementById('chat-box');
+const userInput = document.getElementById('user-input');
+
+// Simulated responses for travel queries
+const travelResponses = {
+    'flights': 'I can help you find flights! Where would you like to go?',
+    'hotels': 'Looking for hotels? Please provide your destination and dates.',
+    'destinations': 'Popular destinations: Paris, Tokyo, New York, Bali. Where would you like to explore?',
+    'book': 'You can book flights and hotels by visiting our booking page.',
+    'hello': 'Hello! I am your travel assistant. How can I help you today?',
+    'bye': 'Goodbye! Have a great trip!',
+};
+
+function sendMessage() {
+    const userText = userInput.value.trim();
+    if (!userText) return;
+
+    addMessageToChat(userText, 'user-message');
+    userInput.value = '';
+
+    // Simulate bot response after a short delay
+    setTimeout(() => {
+        const botResponse = getTravelBotResponse(userText);
+        addMessageToChat(botResponse, 'bot-message');
+    }, 1000);
+}
+
+function addMessageToChat(text, className) {
+    const messageElement = document.createElement('p');
+    messageElement.className = className;
+    messageElement.textContent = text;
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to latest message
+}
+
+function getTravelBotResponse(userText) {
+    userText = userText.toLowerCase();
+    
+    // Check for specific travel-related keywords
+    if (userText.includes('flight')) {
+        return travelResponses['flights'];
+    } else if (userText.includes('hotel')) {
+        return travelResponses['hotels'];
+    } else if (userText.includes('destination')) {
+        return travelResponses['destinations'];
+    } else if (userText.includes('book')) {
+        return travelResponses['book'];
+    } else if (userText.includes('hello') || userText.includes('hi')) {
+        return travelResponses['hello'];
+    } else if (userText.includes('bye')) {
+        return travelResponses['bye'];
+    }
+    
+    return "I am not sure how to help with that. Try asking about flights, hotels, or destinations.";
+}
+
+
+</script>
+</html>
