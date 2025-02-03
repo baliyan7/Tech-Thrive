@@ -95,8 +95,8 @@
 <script>
    // Function to fetch weather data from WeatherAPI
 function fetchWeatherData(location) {
-    const apiKey = 'b55ad4923c4b454e9df21919241610'; // Replace with your actual WeatherAPI key
-    const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
+    const apiKey = '90fb4b00117744bfb02130721241610'; // Replace with your actual WeatherAPI key
+    const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=1`; // Updated to forecast endpoint
 
     fetch(url)
         .then(response => {
@@ -116,13 +116,13 @@ function fetchWeatherData(location) {
 function updateWeatherUI(data) {
     document.querySelector('.temperature').textContent = `${Math.round(data.current.temp_c)}°C`;
     document.querySelector('.condition').textContent = data.current.condition.text;
-    document.querySelector('.range').textContent = `Feels like: ${Math.round(data.current.feelslike_c)}°C`;
-    document.querySelector('.humidity').textContent = `Humidity: ${data.current.humidity}%`;
-    document.querySelector('.wind-speed').textContent = `Wind Speed: ${data.current.wind_kph} kph`;
 
-    if (data.current.air_quality) {
-        document.querySelector('.air-quality').textContent = `Air Quality: ${Math.round(data.current.air_quality["pm2_5"])}`;
-    }
+    // Get sunrise and sunset times from forecast data
+    const sunriseTime = data.forecast.forecastday[0].astro.sunrise;
+    const sunsetTime = data.forecast.forecastday[0].astro.sunset;
+
+    document.querySelector('.sunrise').textContent = `Sunrise: ${sunriseTime}`;
+    document.querySelector('.sunset').textContent = `Sunset: ${sunsetTime}`;
 }
 
 // Add event listener to the search button
