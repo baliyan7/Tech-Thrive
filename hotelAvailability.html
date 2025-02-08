@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Availability</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 0px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#hotelDetails {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.image-gallery {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.image-gallery img {
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+.highlights span {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.room-types .room {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.reviews .review {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.services ul {
+    list-style: none;
+    padding: 0;
+}
+
+.services ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="hotelName">Loading...</h1>
+        <div id="hotelDetails">Loading details...</div>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        // The hotel data array
+        const hotels = [
+            {
+                name: 'The Park New Delhi',
+                location: 'The Park Hotel, 15, Sansad Marg, Hanuman Road Area, Connaught Place, New Delhi, Delhi 110001, India',
+                price: 'From INR 4,000',
+                rating: '★★★★★',
+                description: 'A luxury hotel located in the heart of Delhi, offering a comfortable stay with world-class amenities.',
+                amenities: ['Free Wi-Fi', 'Spa', 'Gym', 'Swimming Pool'],
+                images: [
+                    './Filter-Hotel-image/The Park New Delhi image 1.jpg',
+                    './Filter-Hotel-image/The Park New Delhi image 2.jpeg',
+                    './Filter-Hotel-image/The Park New Delhi image 3.jpeg',
+                ],
+                rooms: [
+                    { type: 'Superior Double Room', sleeps: 2, price: 'INR 5,000' },
+                    { type: 'Deluxe Triple Room', sleeps: 3, price: 'INR 7,500' },
+                ],
+                reviews: [
+                    { rating: '4.8', comment: 'Amazing hotel with great service!', user: 'John', date: 'October 2024' },
+                    { rating: '4.5', comment: 'Great location near the airport.', user: 'Sarah', date: 'October 2024' },
+                ],
+                nearby: [
+                    { place: 'Shiva Mandir Temple', distance: '100m' },
+                    { place: 'Metro Station', distance: '500m' },
+                    { place: 'City Center Mall', distance: '2km' },
+                ],
+                services: ['Free Parking', 'Free Wi-Fi', 'In-house Restaurant', 'Business Center']
+            },
+            {
+                name: 'Pride Plaza Hotel, Aerocity New Delhi',
+                location: 'Metsoul Mahipalpur, New Delhi, India',
+                price: 'From INR 3,000',
+                rating: '★★★★',
+                description: 'A budget-friendly hotel located near the airport, perfect for quick stays.',
+                amenities: ['Airport Shuttle', 'Breakfast Included', 'Free Wi-Fi'],
+                images: [
+                    './Filter-Hotel-image/Hotel Square Plaza image 1.jpg',
+                    './Filter-Hotel-image/Hotel Square Plaza image 2.jpeg',
+                    './Filter-Hotel-image/Hotel Square Plaza image 3.jpeg',
+                ],
+                rooms: [
+                    { type: 'Single Room', sleeps: 1, price: 'INR 2,000' },
+                    { type: 'Family Suite', sleeps: 4, price: 'INR 6,000' },
+                ],
+                reviews: [
+                    { rating: '4.2', comment: 'Convenient location and good service.', user: 'Alex', date: 'September 2024' },
+                    { rating: '4.0', comment: 'Good value for the money.', user: 'Maria', date: 'September 2024' },
+                ],
+                nearby: [
+                    { place: 'Metro Station', distance: '300m' },
+                    { place: 'Shopping Mall', distance: '1km' },
+                ],
+                services: ['Airport Shuttle', 'Free Wi-Fi', 'Parking']
+            },
+            // Add more hotels here
+        ];
+    
+        // Get query parameters from URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+    
+        // Display hotel details based on the hotel name from the URL
+        const hotelName = getQueryParam('hotel');
+        const hotel = hotels.find(h => h.name === hotelName);
+    
+        // Display the hotel name and details
+        if (hotel) {
+            document.getElementById('hotelName').textContent = hotel.name;
+            document.getElementById('hotelDetails').innerHTML = `
+                <p>Location: ${hotel.location}</p>
+                <p>Price: ${hotel.price}</p>
+                <p>Rating: ${hotel.rating}</p>
+                <p>Description: ${hotel.description}</p>
+                <p>Amenities: ${hotel.amenities.join(', ')}</p>
+    
+                <!-- Image Gallery -->
+                <div class="image-gallery">
+                    ${hotel.images.map(image => `<img src="${image}" alt="${hotel.name}" style="width:300px;">`).join('')}
+                </div>
+    
+                <!-- Available Rooms Section -->
+                <div class="room-types">
+                    <h3>Available Rooms</h3>
+                    ${hotel.rooms.map(room => `
+                        <div class="room">
+                            <h4>${room.type}</h4>
+                            <p>Sleeps: ${room.sleeps} guests</p>
+                            <p>Price: ${room.price}</p>
+                            <button>Book Now</button>
+                        </div>
+                    `).join('')}
+                </div>
+    
+                <!-- Guest Reviews Section -->
+                <div class="reviews">
+                    <h3>Guest Reviews</h3>
+                    ${hotel.reviews.map(review => `
+                        <div class="review">
+                            <p>Rating: ${review.rating}/5</p>
+                            <p>"${review.comment}" - ${review.user}, ${review.date}</p>
+                        </div>
+                    `).join('')}
+                </div>
+    
+                <!-- Nearby Landmarks Section -->
+                <div class="location">
+                    <h3>Nearby Landmarks</h3>
+                    ${hotel.nearby.map(place => `
+                        <p>${place.place}: ${place.distance}</p>
+                    `).join('')}
+                </div>
+    
+                <!-- Services & Amenities Section -->
+                <div class="services">
+                    <h3>Services & Amenities</h3>
+                    <ul>
+                        ${hotel.services.map(service => `<li>${service}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        } else {
+            document.getElementById('hotelDetails').textContent = 'Hotel details not found.';
+        }
+    
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    
+</body>
+</html>

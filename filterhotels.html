@@ -1025,7 +1025,9 @@ cards.forEach(card => observer.observe(card));
                         <p>Location: ${hotel.location}</p>
                         <p>Rating: ${hotel.rating}</p>
                         <p>Price: ${hotel.price}</p>
-                         <button class="check-availability">Check Availability</button>
+                         
+                         <button class="check-availability" onclick="checkAvailability('${hotel.name}')">Check Availability</button>
+
                     </div>
                 </div>
                 </div>
@@ -1039,6 +1041,12 @@ cards.forEach(card => observer.observe(card));
             document.getElementById('resultCount').textContent = '';
         }
     }
+// Function to handle 'Check Availability' button click
+function checkAvailability(hotelName) {
+    // Redirect to the new page with the hotel name as a URL parameter
+    const url = `hotelAvailability.html?hotel=${encodeURIComponent(hotelName)}`;
+    window.location.href = url;
+}
 
     // Function to change the image
     function changeImage(direction, hotelName) {
