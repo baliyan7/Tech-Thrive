@@ -96,7 +96,11 @@
    // Function to fetch weather data from WeatherAPI
 function fetchWeatherData(location) {
     const apiKey = '90fb4b00117744bfb02130721241610'; // Replace with your actual WeatherAPI key
+<<<<<<< HEAD
     const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=1`; // Updated to forecast endpoint
+=======
+    const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
+>>>>>>> 5b8810501d4aafa6ce95ed4ff455732964839f03
 
     fetch(url)
         .then(response => {
